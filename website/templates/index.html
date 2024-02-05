@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    {% if "category" in request.path %}
+        Новости дня - {{category.name}}
+    {% else %}
+        Новости дня
+    {% endif %}
+{% endblock %}
+
+
+
+{% block content %}
+<aside class="main_page">
+            <h3>Категории</h3>
+            <a href="/">Все</a>
+            {% for category in categories %}
+            <a href="/category/{{ category.id }}">{{ category.name }}</a>
+            {% endfor %}
+        </aside>
+        <section class="cards">
+            {% for news in news %}
+            <article class="card">
+                <img class="img_news" src="/media/{{ news.photo }}" alt="photo"/>
+                <h2>{{ news.title }}</h2>
+                <p>{{ news.description }}</p>
+                <a href="news/{{ news.id }}">Подробнее</a>
+            </article>
+            {% endfor %}
+        </section>
+{% endblock %}

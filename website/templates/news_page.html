@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} {{ news.title }} {% endblock %}
+{% block content %}
+<section class="padding"></section>
+<aside class="new">
+    <h1 class="title_new"> {{ news.title }} </h1>
+    <p class="desc_new">{{ news.description }}</p>
+    <img class="photo_new" src="/media/{{ news.photo }}"/>
+    <p class="new_category">Категории: {{ news.category }}</p>
+    <a class="back" href="/">Назад</a>
+</aside>
+<section class="adding_news">
+
+</section>
+
+{% endblock %}
+
+

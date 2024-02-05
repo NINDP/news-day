@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<section class="login">
+<h2>Вход</h2>
+<a class="link a" href="{% url 'home' %}">Назад</a>
+<form class="form" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Войти">
+    <a class="link" href="{% url 'signup' %}">Регистрация</a>
+</form>
+
+</section>
+{% endblock %}
