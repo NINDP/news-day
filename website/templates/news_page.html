@@ -1,6 +1,49 @@
 {% extends "base.html" %}
 {% block title %} {{ news.title }} {% endblock %}
 {% block content %}
+<style>
+    .photo_new{
+        width: 500px;
+    }
+
+    .title_new{
+        font-size: 40px;
+        padding-bottom: 20px;
+        text-align: center;
+    }
+
+    .desc_new{
+        padding-bottom: 20px;
+        font-size: 20px;
+    }
+
+    .new{
+        border: 3px solid rgb(65, 105, 225);
+        padding: 15px 25px;
+        border-radius: 20px;
+        width: 1000px;
+    }
+
+    .photo_new{
+        padding-bottom: 20px;
+        border-radius: 5px;
+        width: 800px;
+        display: block;
+        margin: auto;
+    }
+
+    .back{
+        max-width: 200px;
+    }
+
+    .new_category{
+        padding: 10px 0 20px;
+        color:rgba(77, 78, 78, 0.774);
+        font-weight: 600;
+    }
+
+</style>
+
 <section class="padding"></section>
 <aside class="new">
     <h1 class="title_new"> {{ news.title }} </h1>

@@ -89,6 +89,18 @@
         border-radius: 30px;
     }
 
+    .link{
+        padding: 0 40px;
+        font-size: 24px;
+        text-decoration: none;
+        color: rgb(44, 42, 42);
+        font-weight: 600;
+    }
+
+    .link:hover{
+        color: rgb(65, 105, 225);
+    }
+
     .img_news{
         max-width: 400px;
         max-height: fit-content;
@@ -99,54 +111,12 @@
         box-shadow: 5px 5px 10px rgb(65, 105, 225);
     }
 
-    .photo_new{
-        width: 500px;
-    }
-
-    .title_new{
-        font-size: 40px;
-        padding-bottom: 20px;
-        text-align: center;
-    }
-
-    .desc_new{
-        padding-bottom: 20px;
-        font-size: 20px;
-    }
-
-    .new{
-        border: 3px solid rgb(65, 105, 225);
-        padding: 15px 25px;
-        border-radius: 20px;
-        width: 1000px;
-    }
-
-    .photo_new{
-        padding-bottom: 20px;
-        border-radius: 5px;
-        width: 800px;
-        display: block;
-        margin: auto;
-    }
-
-    .back{
-        max-width: 200px;
-    }
-
-    .new_category{
-        padding: 10px 0 20px;
-        color:rgba(77, 78, 78, 0.774);
-        font-weight: 600;
-    }
-
     .header{
         display: flex;
         justify-content: space-around;
         align-items: center;
         padding: 25px;
-        background-color: rgba(65, 105, 225, 0.37);
         border-radius: 20px;
-
     }
 
     .logo{
@@ -155,23 +125,16 @@
         border-radius: 30%;
     }
 
-    .link{
-        padding: 0 40px;
-        font-size: 20px;
-        text-decoration: none;
-        color: rgb(44, 42, 42);
-        font-weight: 600;
-    }
-
-    .link:hover{
-        color: rgb(65, 105, 225);
+    .line_header{
+        border: 2px solid rgb(65, 105, 225);
     }
 
     input{
         border-radius: 5px;
         border:none;
         border: 1px solid rgb(65, 105, 225);
-        padding: 5px 10px;
+        padding: 10px 15px;
+        font-size: 16px;
     }
 
     li{
@@ -184,22 +147,18 @@
         padding: 0 10px 0 0;
     }
 
-    .signup, .login{
-        grid-column-start: 2;
-        text-align: center;
-        margin-left: 150px;
-    }
         
     form{
         border: 2px solid rgb(65, 105, 225);
-        padding: 20px 30px;
+        padding: 40px 70px;
         border-radius: 10px;
         text-align: left;
     }
 
     div{
-        width: 500px;
-        padding: 10px 0;    
+        display: grid;
+        width: 400px;
+        padding: 10px 0 20px;
     }
 
     h2{
@@ -211,13 +170,12 @@
 
 <body>
     <header class="header">
-        <img class="logo" src="{% static 'logo.jpg' %}" alt="logo"/>
+        <a href="/"><img class="logo" src="{% static 'logo.png' %}" alt="logo"/></a>
         <article class="auth"> 
         {% if user.is_authenticated %}
-        <a class="link" href="{% url 'logout' %}?next=/home/">Выход</a>
+        <a class="link" href="{% url 'logout' %}">Выход</a>
         {% if user.is_superuser %}
         <a class="link" href="/admin/"> Админ-панель </a>
-        <a class="link" href="{% url 'logout' %}?next=/home/">Выход</a>
         {% endif %}
         {% else %}
             <a class="link" href="{% url 'login' %}">Вход</a>
@@ -226,6 +184,7 @@
         </article>   
         
     </header>
+    <hr class="line_header"/>
     <main class="main">
         {% block content %}
         {% endblock %}
