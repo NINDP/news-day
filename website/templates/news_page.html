@@ -52,8 +52,20 @@
     <p class="new_category">Категории: {{ news.category }}</p>
     <a class="back" href="/">Назад</a>
 </aside>
-<section class="adding_news">
-
+<section class="reviews">
+    <form method="post">
+        {% comment %} <h3>Добавить комментарий</h3> {% endcomment %}
+        {% csrf_token %}
+        {{ review_form }}
+        <input type="submit" value"Отправить" />
+    </form>
+    <h2>Комментарии:</h2>
+    {% for review in reviews %}
+    <article>
+        <h3>{{ review.user }}</h3>
+        <p>{{ review.text }}</p>
+    </article>
+    {% endfor %}
 </section>
 
 {% endblock %}

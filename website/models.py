@@ -1,10 +1,12 @@
 from datetime import datetime as dt
 from django.conf import settings
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
 AUTH_USER_MODEL = getattr(settings, "AUTH_USER_MODEL", "auth.User")
+    
 
 class Categories(models.Model):
     name = models.CharField(verbose_name="Название",
@@ -43,3 +45,18 @@ class News(models.Model):
     
     def __str__(self):
         return self.title
+
+
+class Reviews(models.Model):
+    user = models.ForeignKey(User, verbose_name="Пользователь", on_delete=models.PROTECT)
+    news = models.ForeignKey(News, verbose_name="Новость", on_delete=models.PROTECT)
+    text = models.TextField(verbose_name="Текст", max_length=3500)
+    date = models.DateTimeField(verbose_name="Дата написания отзыва", auto_now_add=True)
+    
+    def __str__(self):
+        return f'{self.news} | {self.user}: {self.date}'
+    
+    class Meta:
+        verbose_name="Отзыв"
+        verbose_name_plural = "Отзывы"
+    
