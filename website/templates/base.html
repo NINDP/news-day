@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
-    
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
@@ -42,6 +45,7 @@
         text-align: center;
     }
     .main > aside > a{
+        cursor: pointer;
         display: grid;
         text-decoration: none;
         border: 1px solid rgb(65, 105, 225);
@@ -79,14 +83,14 @@
         color: white;
         background-color: rgb(65, 105, 225);
         border: 1px solid rgb(65, 105, 225);
-        border-radius: 20px;
+        border-radius: 15px;
         padding: 8px 20px;
         cursor: pointer;
         float: right;
     }
     .main > section.cards > article.card > a:hover{
         padding: 10px 25px;
-        border-radius: 30px;
+        border-radius: 15px;
     }
 
     .link{
@@ -164,6 +168,10 @@
     h2{
         font-size: 28px;
         padding-bottom: 20px;
+    }
+
+    .no-public{
+        color: rgb(104, 104, 104);
     }
     
 </style>

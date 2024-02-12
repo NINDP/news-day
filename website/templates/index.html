@@ -19,7 +19,9 @@
             <a href="/category/{{ category.id }}">{{ category.name }}</a>
             {% endfor %}
         </aside>
+        
         <section class="cards">
+            {% if count_news %}
             {% for news in news %}
             <article class="card">
                 <img class="img_news" src="/media/{{ news.photo }}" alt="photo"/>
@@ -27,6 +29,9 @@
                 <p>{{ news.description }}</p>
                 <a href="/news/{{ news.id }}">Подробнее</a>
             </article>
-            {% endfor %}
+            {% endfor %} 
+            {% else %}
+            <p class="no-public">Публикаций пока нет...</p>
+            {% endif %}
         </section>
 {% endblock %}

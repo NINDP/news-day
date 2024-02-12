@@ -42,6 +42,68 @@
         font-weight: 600;
     }
 
+    form > input{
+        cursor: pointer;
+        display: grid;
+        text-decoration: none;
+        background-color: white;
+        border: 1px solid rgb(65, 105, 225);
+        padding: 10px;
+        text-align: center;
+        border-radius: 15px;
+        color: black;
+        margin-bottom: 10px;
+    }
+    form > input:hover{
+        color: white;
+        background-color: rgb(65, 105, 225);
+    }
+
+    .form{
+        padding: 0;
+        border: none;
+    }
+
+    .head-comment{
+        padding: 5px 0 5px 0;
+        color: rgb(65, 105, 225);
+    }
+
+    .description-comment{
+        padding: 0 20px 6px 0;
+        width: 400px;
+        word-break: break-all;
+    }
+     
+    h2{
+        padding: 0 0 10px 0;
+    }
+    .comment{
+        width: 400px;
+        border: 2px solid #c5c5c5;
+        border-radius: 8px;
+        padding: 0 15px 5px 10px;
+        margin: 0 0 10px 0;
+    }
+    textarea{
+        padding: 5px;
+        resize: none;
+        height: 100px;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+    label{
+        font-size: 28px;
+        font-weight: 800;
+        padding: 0 0 10px 0;
+    }
+    .date-comment{
+        font-size: 12px;
+        color: rgb(143, 143, 143);
+    }
+    .no-comment{
+        color: rgb(104, 104, 104);
+    }
 </style>
 
 <section class="padding"></section>
@@ -53,19 +115,26 @@
     <a class="back" href="/">Назад</a>
 </aside>
 <section class="reviews">
-    <form method="post">
+    {% if user.is_authenticated %}
+    <form class="form" method="post">
         {% comment %} <h3>Добавить комментарий</h3> {% endcomment %}
         {% csrf_token %}
         {{ review_form }}
         <input type="submit" value"Отправить" />
     </form>
+    {% endif %}
     <h2>Комментарии:</h2>
+    {% if not reviews %}
+    <p class="no-comment">Комментариев пока нет...</p>
+    {% else %}
     {% for review in reviews %}
-    <article>
-        <h3>{{ review.user }}</h3>
-        <p>{{ review.text }}</p>
+    <article class="comment">
+        <h3 class="head-comment">{{ review.user }}</h3>
+        <p class="description-comment">{{ review.text }}</p>
+        <p class="date-comment">{{ review.date }}</p>
     </article>
     {% endfor %}
+    {% endif %}
 </section>
 
 {% endblock %}
